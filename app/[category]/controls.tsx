@@ -11,7 +11,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 
 export function ControlOptions() {
   return (
-    <div className="w-72 text-xl font-medium">
+    <div className="w-72 text-xl font-medium mt-16">
       <Accordion type="single" collapsible className="border-y border-black/20">
         <AccordionItem value="item-1" className="">
           <AccordionTrigger className="bg-slate-200 text-xl font-medium px-3">
@@ -86,17 +86,20 @@ function Details({
 
   if (price || category === "price") {
     const value = category === "price" ? detail : price;
-    params.push(`price=${value}`);
+    const newValue = category === "price" && value === price ? "" : value;
+    params.push(`price=${newValue}`);
   }
 
   if (discount || category === "discount") {
     const value = category === "discount" ? detail : discount;
-    params.push(`discount=${value}`);
+    const newValue = category === "discount" && value === discount ? "" : value;
+    params.push(`discount=${newValue}`);
   }
 
   if (rating || category === "rating") {
     const value = category === "rating" ? detail : rating;
-    params.push(`rating=${value}`);
+    const newValue = category === "rating" && value === rating ? "" : value;
+    params.push(`rating=${newValue}`);
   }
 
   const ultimateSearchParams = params.join("&");

@@ -1,17 +1,18 @@
 import { TItem } from "@/data/items";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { CartButton } from "./cart-button";
 
 export function ListItemCard(item: TItem) {
   return (
-    <div className="flex">
+    <div className="flex items-center h-56 border border-black/5 p-2 px-4 transition hover:shadow-md">
       <Image
         src={item.image}
         width={300}
         height={300}
         alt={item.title}
         draggable={false}
-        className="w-[16rem] h-44 object-cover border border-black/10 rounded-sm mx-auto"
+        className="w-[16rem] h-48 object-cover border border-black/10 rounded-sm mx-auto"
       />
 
       <div className="w-full py-1 px-2">
@@ -49,6 +50,8 @@ export function ListItemCard(item: TItem) {
             ? item.description.slice(0, 78) + "..."
             : item.description}
         </p>
+        <p className="text-xs text-black/70 mt-1 mb-3">Free delihivery</p>
+        <CartButton itemId={item.id} />
       </div>
     </div>
   );
